@@ -57,7 +57,7 @@
     
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%
 \subsection{Pretprocesiranje u Python-u}
 \begin{frame}{Pretprocesiranje u Python-u}
     	\begin{itemize}
@@ -75,7 +75,7 @@
                 \label{fig:prosecne_vrednosti}
          \end{figure}
 		
-		\item \textit{duration, pdays, previous, campaign, balance, job}
+		\item \textit{duration, pdays, previous, campaign, balance, job, education}
 	\end{itemize}	
 \end{frame}
 
@@ -94,7 +94,7 @@
 			
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%
 \subsection{Pretprocesiranje u SPSS modeleru}
 \begin{frame}{Pretprocesiranje u SPSS modeleru}
   			\begin{figure}[h!]
@@ -105,7 +105,7 @@
                 \label{fig:pretprocesiranje_spss}
              \end{figure}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Klasifikacija}
 \begin{frame}{Klasifikacija}
     \begin{itemize}
@@ -118,8 +118,23 @@
     \end{itemize}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
 \subsection{C5.0}
+\begin{frame}{C5.0}
+
+	 \begin{itemize}
+        \item Drvo odlučivanja
+        \item Tendencija je preciznost
+        \item Dubina 13
+    \end{itemize}
+    \begin{figure}[h!]
+                \begin{center}
+                \includegraphics[scale=0.4]{c5_predictor.png}
+                \end{center}
+                \caption{Algoritam C5.0 - Važnost prediktora}
+             \end{figure}
+\end{frame}
+
 \begin{frame}{C5.0}
     \begin{figure}[h!]
                 \begin{center}
@@ -128,8 +143,33 @@
                 \caption{Algoritam C5.0 - Matrica konfuzije}
              \end{figure}
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%
 \subsection{CART}
+
+\begin{frame}{CART}
+	 \begin{itemize}
+        \item Minimalna dubina stabla: 4
+        \item Ginijev indeks
+        \item Bolja stabilnost - Enhance model stability
+		\item Potrkesivanje stabla radi izbegavanja preprilagođenosti        
+    \end{itemize}
+    \begin{figure}[h!]
+                \begin{center}
+                \includegraphics[scale=0.30]{cart_predictor.png}
+                \end{center}
+                \caption{Algoritam CART - Važnost prediktora}
+             \end{figure}
+\end{frame}
+
+\begin{frame}{CART}
+    \begin{figure}[h!]
+                \begin{center}
+                \includegraphics[scale=0.40]{cart_component_model.png}
+                \end{center}
+                \caption{Algoritam CART - Modeli}
+             \end{figure}
+\end{frame}
+
 \begin{frame}{CART}
     \begin{figure}[h!]
                 \begin{center}
@@ -139,7 +179,28 @@
              \end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%
 \subsection{KNN}
+
+\begin{frame}{KNN}
+    \begin{itemize}
+        \item Cilj: Preciznost modela
+        \item k između 3 i 8
+        \item Menhetn rastojanje
+        \item Prediktori jednako važni
+        \item Za k=6 i k=8 najbolja rešenja
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{KNN}
+    \begin{figure}[h!]
+                \begin{center}
+                \includegraphics[scale=0.50]{knn_error.png}
+                \end{center}
+                \caption{Algoritam KNN - Nivo greške u zavisnosti od k}
+             \end{figure}
+\end{frame}
+
 \begin{frame}{KNN}
     \begin{figure}[h!]
                 \begin{center}
@@ -149,27 +210,65 @@
              \end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%
 \subsection{QUEST}
+\begin{frame}{QUEST}
+    \begin{itemize}
+        \item Binarno stablo
+        \item Uvek dubina 2
+        \item \textit{duration} najbitniji 
+        \item Ostali prediktori jednako važni, ali zanemarljivi
+        \item AUC = 0.637, blizu 0.5
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{QUEST}
     \begin{figure}[h!]
                 \begin{center}
                 \includegraphics[scale=0.60]{quest_matrix.png}
                 \end{center}
                 \caption{Algoritam QUEST - Matrica konfuzije}
-             \end{figure}
+     \end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%
 \subsection{Bajesove mreže}
+
+\begin{frame}{QUEST}
+    \begin{itemize}
+        \item Bajesova statistika
+        \item Posmatra \textit{duration}, zatim \textit{job}
+        \item Uslovne verovatnoće svake instance
+        \begin{figure}[h!]
+                \begin{center}
+                \includegraphics[scale=0.40]{Bajes_mreza.png}
+                \end{center}
+                \caption{Algoritam Bajesove mreže}
+     	\end{figure}
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Bajesove mreže}
     \begin{figure}[h!]
                 \begin{center}
                 \includegraphics[scale=0.60]{Bajes_matrix.png}
                 \end{center}
                 \caption{Algoritam Bajesove mreže - Matrica konfuzije}
-             \end{figure}
+     \end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%
 \subsection{Naivan Bajesov algoritam}
+
+\begin{frame}{Naivan Bajesov algoritam}
+    \begin{itemize}
+    	\item trening skup 0,75, test skup 0,25
+        \item 1-yes, 0-no
+        \item sklearn.naive\_bayes
+        \item Gausova formula 
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Naivan Bajesov algoritam}
     \begin{figure}[h!]
                 \begin{center}
@@ -191,7 +290,9 @@
 
 
 \begin{frame}{}
+    \begin{center}
     Hvala na pažnji!
+    \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
